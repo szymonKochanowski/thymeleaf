@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="car, cars, car service, car shop, car salon">
+    <style>
+        #container
+        {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        #nav
+        {
+        }
+            #rightButtons
+            {
+                text-align: right;
+            }
+
+            #adminPanelButton
+            {
+                width: 50%;
+                height: 50%;
+                float: left;
+                text-align: left;
+            }
+            #userPanelButton
+            {
+                width: 50%;
+                height: 50%;
+                float: left;
+                text-align: left;
+            }
+            #profilePictureAndUsername
+            {
+                width: 50%;
+                height: 50%;
+                float: left;
+                text-align: left;
+            }
+
+        #logo
+        {
+            clear: both;
+            color: grey;
+            padding: 30px;
+        }
+
+        #filter
+        {
+            text-align: centre;
+            margin-left: 500px;
+            margin-right: 500px;
+            background-color: black;
+        }
+
+            #keywordFilter
+            {
+                float: left;
+                width: 20%;
+                height: 20%;
+                text-align: centre;
+                color: white;
+            }
+            #startPriceFilter
+            {
+                float: left;
+                width: 20%;
+                height: 20%;
+            }
+            #endPriceFilter
+            {
+                float: left;
+                width: 20%;
+                height: 20%;
+            }
+            #startYearFilter
+            {
+                float: left;
+                width: 20%;
+                height: 20%;
+            }
+            #endYearFilter
+            {
+                float: left;
+                width: 20%;
+                height: 20%;
+            }
+            #filterButton
+            {
+                padding: 20px;
+                align-items: center;
+                clear: both;
+            }
+
+
+       a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+
+       input
+       {
+            text-align: center;
+            height: 60px;
+            vertical-align: middle;
+       }
+
+       ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          white-space:pre-line;
+          position:relative;
+          top:-7px;
+
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+             white-space:pre-line;
+          position:relative;
+          top:-7px;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            white-space:pre-line;
+          position:relative;
+          top:-7px;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+             white-space:pre-line;
+          position:relative;
+          top:-7px;
+        }
+
+        select
+       {
+            text-align: center;
+            height: 60px;
+            vertical-align: middle;
+       }
+
+       .mytable th, td
+       {
+            text-align: center;
+            vertical-align: middle;
+       }
+
+    </style>
+</head>
+<body>
+
+<div id="container" class="p-3 mb-2">
+
+    <div id="nav">
+
+        <div id="rightButtons">
+            <button type="button" class="btn btn-warning"><a th:href="@{/user/addUser}" class="buttonlink"> Register as
+                a new User</a>
+            </button>
+            <button type="button" class="btn btn-warning"><a href="/basket" class="buttonlink"> Basket</a></button>
+            <button type="button" class="btn btn-warning"><a href="/loginPage" class="buttonlink"> Login</a></button>
+            <button type="button" class="btn btn-warning"><a href="/logout" class="buttonlink"> Logout</a></button>
+        </div>
+
+        <div id="adminPanelButton" sec:authorize="hasRole('ROLE_ADMIN')">
+            <button type="button" class="btn btn-warning"><a th:href="@{/admin/adminPanel}" class="buttonlink"> Go to
+                Administrator
+                Panel</a></button>
+        </div>
+        <div id="userPanelButton" sec:authorize="hasRole('ROLE_USER')">
+            <button type="button" class="btn btn-warning"><a th:href="@{/user/userPanel}" class="buttonlink"> Go to User
+                Panel</a>
+            </button>
+        </div>
+
+        <div id="profilePictureAndUsername">
+            <img onerror='this.style.display = "none"'
+                 th:src="(${loggedInUser} != null) ? ${loggedInUser.getProfilePictureUrl}"
+                 style="width: 100px; height: 100px;" border="0">
+            <h4>[[${loggedInUser} != null ? ${loggedInUser.getUsername} : null]]</h4>
+        </div>
+
+    </div>
+
+
+    <div id="logo">
+        <h1>Welcome in our Exclusive Cars Salon</h1>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text center">
+        [[${message}]]
+    </div>
+
+    <div th:if="${errorMessage}" class="alert alert-danger text center">
+        [[${errorMessage}]]
+    </div>
+    <br>
+
+    <h4 style="color: grey;">Filer cars by:</h4>
+    <div id="filter">
+        <table border="1" class="table table-dark table-striped;">
+            <thead>
+            <tr>
+                <th> Keyword</th>
+                <th> Price from</th>
+                <th> Price to</th>
+                <th> Year from</th>
+                <th> Year to</th>
+            </tr>
+            </thead>
+        </table>
+
+        <form th:action="@{/}" method="get">
+            <div id="keywordFilter">
+                <input type="search" name="keyword" id="textSearch" placeholder="keyword" class="form-control"; style="background-color: #3A3B3C; color: white;"/>
+            </div>
+
+            <div id="startPriceFilter">
+                <select name="startPrice" class="form-control" id="startPrice" style="background-color: #3A3B3C; color: white;">
+                    <option value="">from</option>
+                    <option value="0.0">0</option>
+                    <option value="2000.0">2.000</option>
+                    <option value="3000.0">3.000</option>
+                    <option value="5000.0">5.000</option>
+                    <option value="10000.0">10.000</option>
+                    <option value="2000.0">15.000</option>
+                    <option value="2000.0">20.000</option>
+                    <option value="100000.0">100.000</option>
+                    <option value="100000.0">200.000</option>
+                    <option value="100000.0">500.000</option>
+                </select>
+            </div>
+
+            <div id="endPriceFilter">
+                <select name="endPrice" class="form-control" id="endPrice" style="background-color: #3A3B3C; color: white;">
+                    <option value="">to</option>
+                    <option value="2000.0">2.000</option>
+                    <option value="3000.0">3.000</option>
+                    <option value="5000.0">5.000</option>
+                    <option value="10000.0">10.000</option>
+                    <option value="2000.0">15.000</option>
+                    <option value="2000.0">20.000</option>
+                    <option value="100000.0">100.000</option>
+                    <option value="100000.0">200.000</option>
+                    <option value="100000.0">500.000</option>
+                </select>
+            </div>
+
+            <div id="startYearFilter">
+                <select name="startYear" class="form-control" id="startYear" style="background-color: #3A3B3C; color: white;">
+                    <option value="">from</option>
+                    <option value="1990">1990</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="12012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+
+            <div id="endYearFilter">
+                <select name="endYear" class="form-control" id="endYear" style="background-color: #3A3B3C; color: white;">
+                    <option value="">to</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="12012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+
+            <div id="filterButton">
+                <button type="submit" class="btn btn-secondary">Filter car</button>
+            </div>
+
+        </form>
+
+    </div>
+    <br>
+
+    <div>
+        <h1 style="color:gray">Cars in our offer: </h1>
+    </div>
+    <br>
+    <div>
+        <table id="mytable" border="1" class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th> Model</th>
+                <th> Mark</th>
+                <th> Year</th>
+                <th> Color</th>
+                <th> Price</th>
+                <th> Picture</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.mark}"></td>
+                <td th:text="${car.year}"></td>
+                <td th:text="${car.color}"></td>
+                <td th:text="${car.price}"></td>
+                <td>
+                    <a th:href="@{'/carDetail/' + ${car.id}}" target="_blank" title="Go to car details">
+                        <img th:src="@{${car.pictureUrl}}" style="width: 300px; height: 200px;">
+                    </a>
+                </td>
+                <td>
+                    <br>
+                    <form th:action="@{'/basket/add/' + ${car.id} + '/' + 1}" method="post">
+                        <input type="submit" value="Add Car to Basket" class="btn btn-primary m-2"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>

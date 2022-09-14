@@ -1,0 +1,217 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #container
+        {
+            width: 100%;
+            height: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+<div id="container" class="p-3 mb-2">
+
+        <div style="text-align: left">
+            <input type="button" value="Go back!" onclick="history.back()" class="btn btn-warning">
+            <button type="button" class="btn btn-warning"><a href="/" class="buttonlink"> Go to Main Page </a></button>
+        </div>
+
+        <div>
+            <h1>[[${pageTitle}]]</h1>
+        </div>
+
+        <form th:action="@{/addCar}" th:object="${car}" method="post" style="max-width: 500px; margin: 0 auto;">
+            <!-- added hidden id allows to update existing car instead of create a new car -->
+            <input type="hidden" th:field="*{id}">
+            <div class="border border-secondary rounded p-3">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car model</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{model}" placeholder="Put car model" required
+                               minlength="2" maxlength="45">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car mark</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{mark}" placeholder="Put car mark" required
+                               minlength="2" maxlength="45">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car year</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{year}"
+                               placeholder="Put car year production" required min="1900" max="2022">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car color</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{color}" placeholder="Put car color" required
+                               minlength="3" maxlength="45">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car price</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{price}" placeholder="Put car price"
+                               required min="1" max="9999999">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car picture</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{pictureUrl}"
+                               placeholder="Put link to picture" required minlength="5" maxlength="2000">
+                    </div>
+                </div>
+                <!--                ------- add car details ------  -->
+                <input type="hidden" th:field="*{carDetail.id}">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car mileage</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{carDetail.mileage}"
+                               placeholder="Put car mileage" min="0">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="typeOfFuel">Type of fuel</label>
+                    <div class="col-sm-8">
+                        <select name="typeOfFuel" class="form-control" id="typeOfFuel"
+                                th:field="*{carDetail.typeOfFuel}">
+                            <option value="petrol" selected>Petrol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="gas">Gas</option>
+                            <option value="electric">Electric</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car horse power</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{carDetail.power}"
+                               placeholder="Put car horse power" required min="20" max="999">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="transmission">Car transmission</label>
+                    <div class="col-sm-8">
+                        <select name="transmission" class="form-control" id="transmission"
+                                th:field="*{carDetail.transmission}">
+                            <option value="manual" selected>Manual</option>
+                            <option value="automate">Automate</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="drive">Car drive</label>
+                    <div class="col-sm-8">
+                        <select name="drive" class="form-control" id="drive" th:field="*{carDetail.drive}">
+                            <option value="font wheel drive">Font wheel drive</option>
+                            <option value="rear wheel drive" selected>Rear wheel drive</option>
+                            <option value="all wheel drive system">All wheel drive system</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="bodyType">Car body type</label>
+                    <div class="col-sm-8">
+                        <select name="bodyType" class="form-control" id="bodyType" th:field="*{carDetail.bodyType}">
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="station wagon">Station wagon</option>
+                            <option value="sedan" selected>Sedan</option>
+                            <option value="Liftback">Liftback</option>
+                            <option value="Van">Van</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Crossover">Crossover</option>
+                            <option value="Coupe">Coupe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car number of doors</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{carDetail.numberOfDoors}"
+                               placeholder="Put car number of doors" required min="2" max="5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car number of seats</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" th:field="*{carDetail.numberOfSeats}"
+                               placeholder="Put car number of seats" required min="1" max="9">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Car country of origin</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{carDetail.countryOfOrigin}"
+                               placeholder="Put car country of origin">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="neverCrashed">Car was never crashed</label>
+                    <div class="col-sm-8">
+                        <select name="neverCrashed" class="form-control" id="neverCrashed"
+                                th:field="*{carDetail.neverCrashed}">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="vehicleCondition">Car state</label>
+                    <div class="col-sm-8">
+                        <select name="vehicleCondition" class="form-control" id="vehicleCondition"
+                                th:field="*{carDetail.vehicleCondition}">
+                            <option value="new" selected>New</option>
+                            <option value="used">Used</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="airCondition">Car air condition</label>
+                    <div class="col-sm-8">
+                        <select name="airCondition" class="form-control" id="airCondition"
+                                th:field="*{carDetail.airCondition}">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary m-2">Save</button>
+                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+</div>
+
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #container
+        {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        #nav
+        {
+        }
+            #leftButton
+            {
+                width: 21%;
+                height: 21%;
+                float: left;
+                text-align: left;
+            }
+            #profilePictureAndUsername
+            {
+                width: 58%;
+                height: 58%;
+                float: left;
+            }
+            #rightButtons
+            {
+                width: 21%;
+                height: 21%;
+                float: left;
+                text-align: right;
+            }
+
+        #mainOptions
+        {
+            clear: both;
+            color: grey;
+            padding: 30px;
+        }
+
+        #title
+        {
+            clear: both;
+            color: grey;
+            padding: 30px;
+        }
+
+       a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+<div id="container" class="p-3 mb-2">
+
+        <div id="nav">
+
+            <div id="leftButton">
+                <input type="button" value="Go back!" onclick="history.back()" class="btn btn-warning">
+            </div>
+
+            <div id="profilePictureAndUsername">
+                <img onerror='this.style.display = "none"' th:src="(${loggedInUser} != null) ? ${loggedInUser.getProfilePictureUrl}"
+                     style="width: 100px; height: 100px;" border="0">
+                <h2>[[${loggedInUser} != null ? ${loggedInUser.getUsername} : null]]</h2>
+            </div>
+
+            <div id="rightButtons">
+                <button type="button" class="btn btn-warning"><a href="/loginPage" class="buttonlink"> Login</a> </button>
+                <button type="button" class="btn btn-warning"><a href="/logout" class="buttonlink"> Logout</a> </button>
+            </div>
+
+        </div>
+
+        <div id="mainOptions">
+            <button type="button" class="btn btn-warning"><a th:href="@{/addCar}" class="buttonlink"> Add new car </a> </button>
+            <button type="button" class="btn btn-warning"><a th:href="@{/user/all}" class="buttonlink"> See Users List </a> </button>
+            <button type="button" class="btn btn-warning"><a th:href="@{/user/addUser}" class="buttonlink"> Register as a new Admin </a> </button>
+            <button type="button" class="btn btn-warning" ><a th:href="@{/user/userPanel}" class="buttonlink"> Go to Admin Profile</a> </button>
+        </div>
+
+        <div th:if="${message}" class="alert alert-success text center">
+            [[${message}]]
+        </div>
+
+        <div id="title">
+            <h1>Car Table</h1>
+        </div>
+        <div>
+            <table border="1" class="table table-dark table-striped">
+                <tr>
+                    <th> Id</th>
+                    <th> Model</th>
+                    <th> Mark</th>
+                    <th> Year</th>
+                    <th> Color</th>
+                    <th> Price</th>
+                    <th> Picture</th>
+                    <th> Options</th>
+                </tr>
+                <tbody>
+                <tr th:each="car : ${cars}">
+                    <td th:text="${car.id}"></td>
+                    <td th:text="${car.model}"></td>
+                    <td th:text="${car.mark}"></td>
+                    <td th:text="${car.year}"></td>
+                    <td th:text="${car.color}"></td>
+                    <td th:text="${car.price}"></td>
+                    <td>
+                        <a th:href="@{'/carDetail/' + ${car.id}}" target="_blank" title="Go to car details" class="buttonlink">
+                            <img th:src="@{${car.pictureUrl}}" style="width: 300px; height: 200px;">
+                        </a>
+                    </td>
+                    <td>
+                        <br>
+                        <a th:href="@{'/updateCar/' + ${car.id}}" class="btn btn-primary m-2">Edit</a>
+                        <br>
+                        <br>
+                        <a th:href="@{'/deleteCar/' + ${car.id}}" class="btn btn-danger m-2">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+</div>
+
+</body>
+</html>

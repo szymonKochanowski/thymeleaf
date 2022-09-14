@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+<div class="p-3 mb-2 bg-dark text-white">
+
+    <div class="container-fluid text-center">
+
+
+        <div style="text-align: centre">
+            <input type="button" value="Go back!" onclick="history.back()" class="btn btn-warning">
+            <button type="button" class="btn btn-warning"><a href="/" class="buttonlink"> Go to Main Page </a> </button>
+        </div>
+
+        <div style="text-align: right">
+            <button type="button" class="btn btn-warning"><a href="/logout" class="buttonlink"> Logout</a></button>
+        </div>
+
+        <div>
+            <img onerror='this.style.display = "none"' th:src="(${loggedInUser} != null) ? ${loggedInUser.getProfilePictureUrl}" style="width: 100px; height: 100px;" border="0">
+            <h2>[[${loggedInUser} != null ? 'Logged in as: ' + ${loggedInUser.getUsername} : null]]</h2>
+        </div>
+
+        <div>
+            <h1>Something went wrong!</h1>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

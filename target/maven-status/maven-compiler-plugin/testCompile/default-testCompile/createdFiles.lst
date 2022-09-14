@@ -1,0 +1,10 @@
+com\thymeleaf\controller\CarControllerTest.class
+com\thymeleaf\controller\AdminControllerTest.class
+com\thymeleaf\controller\CarDetailControllerTest.class
+com\thymeleaf\ThymeleafApplicationTests.class
+com\thymeleaf\controller\LoginControllerTest.class
+com\thymeleaf\controller\UserControllerTest.class
+com\thymeleaf\service\BasketServiceTest.class
+com\thymeleaf\service\UserServiceTest.class
+com\thymeleaf\controller\BasketControllerTest.class
+com\thymeleaf\service\CarServiceTest.class

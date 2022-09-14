@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #container
+        {
+            width: 100%;
+            height: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+    .error {
+        color: red;
+    }
+
+    a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+<div id="container" class="p-3 mb-2">
+
+        <div style="text-align: left">
+            <input type="button" value="Go back!" onclick="history.back()" class="btn btn-warning">
+            <button type="button" class="btn btn-warning"><a href="/" class="buttonlink"> Go to Main Page </a> </button>
+        </div>
+
+        <div>
+            <h1>[[${pageTitle}]]</h1>
+        </div>
+
+        <div th:if="${errorMessage}" class="alert alert-danger text center">
+            [[${errorMessage}]]
+        </div>
+
+        <form th:action="@{/user/addUser}" th:object="${user}" method="post" style="max-width: 500px; margin: 0 auto;">
+            <!-- added hidden id allows to update existing car instead of create a new car -->
+
+            <input type="hidden" th:field="*{id}">
+            <div class="border border-secondary rounded p-3" style="width: 500px; height: 650px;">
+                <div class="center">
+                    <img src="/static/images/people.png"  th:src="@{/images/people.png}" alt="People" style="width: 460px; height: 300px;">
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Username </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{username}" placeholder="Put username">
+                        <p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Password</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{password}" placeholder="Put password">
+                        <p th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Profile Picture</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{profilePictureUrl}" placeholder="Put profile picture URL">
+                        <p th:if="${#fields.hasErrors('profilePictureUrl')}" th:errorclass="error" th:errors="*{profilePictureUrl}"/>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary m-2">Save</button>
+                    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+</div>
+
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/}]]";
+    }
+</script>
+
+</body>
+</html>

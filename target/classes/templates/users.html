@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR SHOP</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #container
+        {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        #nav
+        {
+        }
+            #leftButtons
+            {
+                width: 21%;
+                height: 21%;
+                float: left;
+                text-align: left;
+            }
+            #profilePictureAndUsername
+            {
+                width: 58%;
+                height: 58%;
+                float: left;
+            }
+            #rightButton
+            {
+                width: 21%;
+                height: 21%;
+                float: right;
+                text-align: right;
+            }
+
+        #title
+        {
+            clear: both;
+            color: grey;
+            padding: 30px;
+        }
+
+        a.buttonlink
+       {
+            color: black;
+            text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+<div id="container" class="p-3 mb-2">
+
+    <div id="nav">
+
+        <div id="leftButtons">
+            <input type="button" value="Go back!" onclick="history.back()" class="btn btn-warning">
+            <button type="button" class="btn btn-warning"><a href="/" class="buttonlink"> Go to Main Page </a></button>
+        </div>
+
+        <div id="profilePictureAndUsername">
+            <img onerror='this.style.display = "none"'
+                 th:src="(${loggedInUser} != null) ? ${loggedInUser.getProfilePictureUrl}"
+                 style="width: 100px; height: 100px;" border="0">
+            <h2>[[${loggedInUser} != null ? ${loggedInUser.getUsername} : null]]</h2>
+        </div>
+
+        <div id="rightButton">
+            <button type="button" class="btn btn-warning"><a href="/logout" class="buttonlink"> Logout</a></button>
+        </div>
+
+    </div>
+
+    <div id="title">
+        <h1>User Table</h1>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table border="1" class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th> Id</th>
+                <th> Username</th>
+                <th> Password</th>
+                <th> Role</th>
+                <th> Enabled</th>
+                <th> CreatedOn</th>
+                <th> UpdatedOn</th>
+                <th> Profile Picture</th>
+                <th> Option</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.role}"></td>
+                <td th:text="${user.enabled}"></td>
+                <td th:text="${user.createdOn}"></td>
+                <td th:text="${user.updatedOn}"></td>
+                <td>
+                    <img th:src="@{${user.profilePictureUrl}}" style="width: 100px; height: 100px;">
+                </td>
+                <td>
+                    <br>
+                    <a class="btn btn-danger m-2" th:href="@{'/user/deleteUser/' + ${user.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
