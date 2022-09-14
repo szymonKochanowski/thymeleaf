@@ -44,3 +44,13 @@ d
 4src/main/java/com/thymeleaf/service/UserService.java,5\6\569749f3cabed2a92704b84302d2afc2c3702533
 k
 ;src/main/java/com/thymeleaf/security/WebSecurityConfig.java,0\4\04412ff31f4e6a517f3508ce527c1340436cf4af
+k
+;src/main/java/com/thymeleaf/controller/LoginController.java,b\a\bae629927879f19858ace244fc18bd3a7f678bd7
+\
+,src/main/java/com/thymeleaf/entity/User.java,2\2\22eec137a7408b45aaa1bfaf6b512e5ed35979d3
+t
+Dsrc/main/java/com/thymeleaf/excepton/DuplicateUsernameException.java,b\6\b632fb2f05ab346f6bba8b4a136a088965c215d9
+i
+9src/main/java/com/thymeleaf/controller/CarController.java,e\8\e8dc8e04b61cd4b32a9447c268c470ead4e4df0d
+c
+3src/main/java/com/thymeleaf/service/CarService.java,1\7\17bae794d81549db1860a0c4900bb2aceee110c9
