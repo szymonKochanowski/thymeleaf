@@ -29,14 +29,8 @@ i
 9src/main/java/com/thymeleaf/service/CarDetailService.java,5\b\5b7b7b3cd5cbb9a7861483df3db6e0bca62ff4a0
 o
 ?src/main/java/com/thymeleaf/controller/CarDetailController.java,d\8\d87588743e8aedf84bd1cff9f231a77bca70e8b2
-n
->src/test/java/com/thymeleaf/controller/UserControllerTest.java,2\7\27e0fc879832d21890c5229f881a141048f503a9
 k
 ;src/main/java/com/thymeleaf/controller/AdminController.java,5\0\50bc49b83e735d818a2623201a97095d5a9c948b
-j
-:src/test/java/com/thymeleaf/service/BasketServiceTest.java,0\4\0420eed6b8fa2b2992785d3e3bbeceb1858c05ae
-h
-8src/test/java/com/thymeleaf/service/UserServiceTest.java,a\6\a6dbfab045236ddd9305415085667d28ebfb1c25
 e
 5src/main/java/com/thymeleaf/service/AdminService.java,a\a\aa9ffcbeb963a7c96984793502604889bfef7079
 :
@@ -46,8 +40,6 @@ e
 5src/main/java/com/thymeleaf/ThymeleafApplication.java,e\6\e6b3e01d47e175ca4feef4ac074551d3e4801c34
 l
 <src/main/java/com/thymeleaf/controller/BasketController.java,5\4\542c0bf50b943358721fe6aaf06887212ea99fec
-f
-6src/main/java/com/thymeleaf/service/BasketService.java,5\e\5e64cd3a860dbf468c7fadf96bc5de2c101c8764
 d
 4src/main/java/com/thymeleaf/service/UserService.java,5\6\569749f3cabed2a92704b84302d2afc2c3702533
 k

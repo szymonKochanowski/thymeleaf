@@ -57,7 +57,7 @@ public class BasketService {
 
     public Basket findBasketById(Integer basketId) {
         Optional<Basket> optionalBasket = basketReposiotry.findBasketById(basketId);
-        if (optionalBasket.isEmpty()) {
+        if (!optionalBasket.isPresent()) {
             log.error("Basket with id: {} not found", basketId);
             throw new BasketNotFoundException("Basket with id " + basketId + " not found");
         }

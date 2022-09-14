@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.thymeleaf.controller.UserControllerTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 1.865 s <<< FAILURE! - in com.thymeleaf.controller.UserControllerTest
-getAllUsers  Time elapsed: 0.021 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<403>
-	at com.thymeleaf.controller.UserControllerTest.getAllUsers(UserControllerTest.java:57)
-
-deleteUserById  Time elapsed: 0.016 s  <<< ERROR!
-org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.lang.NullPointerException
-	at com.thymeleaf.controller.UserControllerTest.deleteUserById(UserControllerTest.java:152)
-Caused by: java.lang.NullPointerException
-	at com.thymeleaf.controller.UserControllerTest.deleteUserById(UserControllerTest.java:152)
-
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.798 s - in com.thymeleaf.controller.UserControllerTest

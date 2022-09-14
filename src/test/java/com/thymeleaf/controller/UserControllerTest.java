@@ -23,8 +23,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -47,7 +46,7 @@ class UserControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    @WithMockUser(username = "test123", roles = "USER", password = "test123")
+    @WithMockUser(username = "admin123", roles = {"ADMIN"}, password = "admin123")
     @Test
     void getAllUsers() throws Exception {
         when(userService.getAllUsers()).thenReturn(preparedUserList());
@@ -145,12 +144,13 @@ class UserControllerTest {
     @Test
     void deleteUserById() throws Exception {
         Integer id = preparedUser().getId();
+        when(userService.getLogInUser()).thenReturn(preparedUser());
         when(userService.findUserById(id)).thenReturn(preparedUser());
         doNothing().when(basketService).deleteAllBoughtCarsFromBasketsByUser(preparedUser());
         doNothing().when(userService).deleteUserById(id);
 
-        mockMvc.perform(get("/user/deleteUser/{id}", id))
-                .andExpect(view().name("redirect:/user/all"))
+        mockMvc.perform(delete("/user/deleteUser/{id}", id))
+                .andExpect(view().name("redirect:/logout"))
                 .andExpect(flash().attributeExists("message"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
