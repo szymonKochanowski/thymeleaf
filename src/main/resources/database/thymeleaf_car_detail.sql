@@ -18,7 +18,7 @@
 --
 -- Table structure for table `car_detail`
 --
-use heroku_85fb6b6f2cfb340;
+use heroku_82b970403bd5b80;
 
 DROP TABLE IF EXISTS `car_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
