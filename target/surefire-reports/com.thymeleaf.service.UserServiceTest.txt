@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.thymeleaf.service.UserServiceTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.58 s - in com.thymeleaf.service.UserServiceTest
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.644 s - in com.thymeleaf.service.UserServiceTest
