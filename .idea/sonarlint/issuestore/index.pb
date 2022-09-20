@@ -29,8 +29,6 @@ i
 9src/main/java/com/thymeleaf/service/CarDetailService.java,5\b\5b7b7b3cd5cbb9a7861483df3db6e0bca62ff4a0
 o
 ?src/main/java/com/thymeleaf/controller/CarDetailController.java,d\8\d87588743e8aedf84bd1cff9f231a77bca70e8b2
-k
-;src/main/java/com/thymeleaf/controller/AdminController.java,5\0\50bc49b83e735d818a2623201a97095d5a9c948b
 e
 5src/main/java/com/thymeleaf/service/AdminService.java,a\a\aa9ffcbeb963a7c96984793502604889bfef7079
 :
@@ -50,8 +48,6 @@ k
 ,src/main/java/com/thymeleaf/entity/User.java,2\2\22eec137a7408b45aaa1bfaf6b512e5ed35979d3
 t
 Dsrc/main/java/com/thymeleaf/excepton/DuplicateUsernameException.java,b\6\b632fb2f05ab346f6bba8b4a136a088965c215d9
-i
-9src/main/java/com/thymeleaf/controller/CarController.java,e\8\e8dc8e04b61cd4b32a9447c268c470ead4e4df0d
 c
 3src/main/java/com/thymeleaf/service/CarService.java,1\7\17bae794d81549db1860a0c4900bb2aceee110c9
 :
@@ -59,3 +55,9 @@ c
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 f
 6src/main/java/com/thymeleaf/service/BasketService.java,5\e\5e64cd3a860dbf468c7fadf96bc5de2c101c8764
+U
+%.mvn/wrapper/maven-wrapper.properties,3\2\32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
+g
+7src/test/java/com/thymeleaf/service/CarServiceTest.java,a\5\a52e78b27cb9ac2024e1c65c0d653511952ef208
+h
+8src/test/java/com/thymeleaf/service/UserServiceTest.java,a\6\a6dbfab045236ddd9305415085667d28ebfb1c25
