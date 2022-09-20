@@ -219,12 +219,11 @@
 
         <form th:action="@{/}" method="get">
             <div id="keywordFilter">
-                <input type="search" name="keyword" id="textSearch" placeholder="keyword" class="form-control"; style="background-color: #3A3B3C; color: white;"/>
+                <input type="search" name="keyword" id="textSearch" placeholder="text" class="form-control"; style="background-color: #3A3B3C; color: white;"/>
             </div>
 
             <div id="startPriceFilter">
                 <select name="startPrice" class="form-control" id="startPrice" style="background-color: #3A3B3C; color: white;">
-                    <option value="">from</option>
                     <option value="0.0">0</option>
                     <option value="2000.0">2.000</option>
                     <option value="3000.0">3.000</option>
@@ -255,7 +254,6 @@
 
             <div id="startYearFilter">
                 <select name="startYear" class="form-control" id="startYear" style="background-color: #3A3B3C; color: white;">
-                    <option value="">from</option>
                     <option value="1990">1990</option>
                     <option value="2000">2000</option>
                     <option value="2001">2001</option>
