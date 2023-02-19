@@ -24,7 +24,7 @@ public class CarController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/getCars")
+    @GetMapping("/")
     public String getAllCars(Model model,
                              @RequestParam(required = false) String keyword,
                              @RequestParam(required = false) Double startPrice,
