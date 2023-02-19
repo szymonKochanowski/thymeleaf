@@ -27,29 +27,19 @@ n
 >src/main/java/com/thymeleaf/excepton/CarNotFoundException.java,c\9\c9d0d10465edcba008962a4ed8420e3b5f5357d4
 i
 9src/main/java/com/thymeleaf/service/CarDetailService.java,5\b\5b7b7b3cd5cbb9a7861483df3db6e0bca62ff4a0
-o
-?src/main/java/com/thymeleaf/controller/CarDetailController.java,d\8\d87588743e8aedf84bd1cff9f231a77bca70e8b2
 e
 5src/main/java/com/thymeleaf/service/AdminService.java,a\a\aa9ffcbeb963a7c96984793502604889bfef7079
 :
 
 readMe.txt,8\f\8f6197d674945309f80a767cbd2a59f098e30fc6
-e
-5src/main/java/com/thymeleaf/ThymeleafApplication.java,e\6\e6b3e01d47e175ca4feef4ac074551d3e4801c34
-l
-<src/main/java/com/thymeleaf/controller/BasketController.java,5\4\542c0bf50b943358721fe6aaf06887212ea99fec
 d
 4src/main/java/com/thymeleaf/service/UserService.java,5\6\569749f3cabed2a92704b84302d2afc2c3702533
-k
-;src/main/java/com/thymeleaf/security/WebSecurityConfig.java,0\4\04412ff31f4e6a517f3508ce527c1340436cf4af
 k
 ;src/main/java/com/thymeleaf/controller/LoginController.java,b\a\bae629927879f19858ace244fc18bd3a7f678bd7
 \
 ,src/main/java/com/thymeleaf/entity/User.java,2\2\22eec137a7408b45aaa1bfaf6b512e5ed35979d3
 t
 Dsrc/main/java/com/thymeleaf/excepton/DuplicateUsernameException.java,b\6\b632fb2f05ab346f6bba8b4a136a088965c215d9
-c
-3src/main/java/com/thymeleaf/service/CarService.java,1\7\17bae794d81549db1860a0c4900bb2aceee110c9
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -61,3 +51,11 @@ g
 7src/test/java/com/thymeleaf/service/CarServiceTest.java,a\5\a52e78b27cb9ac2024e1c65c0d653511952ef208
 h
 8src/test/java/com/thymeleaf/service/UserServiceTest.java,a\6\a6dbfab045236ddd9305415085667d28ebfb1c25
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+j
+:src/test/java/com/thymeleaf/service/BasketServiceTest.java,0\4\0420eed6b8fa2b2992785d3e3bbeceb1858c05ae
+n
+>src/test/java/com/thymeleaf/controller/UserControllerTest.java,2\7\27e0fc879832d21890c5229f881a141048f503a9
+j
+:src/main/java/com/thymeleaf/controller/UserController.java,a\3\a391388167a3800bea141b643459b946cf3819e8

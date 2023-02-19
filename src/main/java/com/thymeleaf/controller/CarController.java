@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 @Slf4j
+@RequestMapping("/car")
 public class CarController {
 
     @Autowired
