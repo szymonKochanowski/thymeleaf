@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
-    @Query(value = "select * from thymeleaf.car c where " +
+    @Query(value = "select * from heroku_4cc95115bcc07f5.car c where " +
             "((c.model like %:keyword%) or (c.mark like %:keyword%) or (c.color like %:keyword%)) " +
             "and ((:startPrice is null or :endPrice is null) or c.price between :startPrice and :endPrice) " +
             "and ((:startYear is null or :endYear is null) or c.year between :startYear and :endYear);",
