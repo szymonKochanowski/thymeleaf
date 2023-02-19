@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/car/", "/user/addUser", "**/images/**.**", "/**/*.png", "/**/*.jpg", "/**/*.js", "templates/**.html", "/carDetail/{id}", "/webjars/**").permitAll()
+                .antMatchers("/getCars", "/", "/user/addUser", "**/images/**.**", "/**/*.png", "/**/*.jpg", "/**/*.js", "templates/**.html", "/carDetail/{id}", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/loginPage").permitAll()
                 .antMatchers("/user/deleteUser/**", "/user/userPanel", "/user/updateUserProfile", "/basket", "/basket/add/**/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/loginPage").hasAnyRole("USER", "ADMIN")

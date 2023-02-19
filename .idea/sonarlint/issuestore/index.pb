@@ -34,8 +34,6 @@ e
 readMe.txt,8\f\8f6197d674945309f80a767cbd2a59f098e30fc6
 d
 4src/main/java/com/thymeleaf/service/UserService.java,5\6\569749f3cabed2a92704b84302d2afc2c3702533
-k
-;src/main/java/com/thymeleaf/controller/LoginController.java,b\a\bae629927879f19858ace244fc18bd3a7f678bd7
 \
 ,src/main/java/com/thymeleaf/entity/User.java,2\2\22eec137a7408b45aaa1bfaf6b512e5ed35979d3
 t
@@ -57,5 +55,3 @@ j
 :src/test/java/com/thymeleaf/service/BasketServiceTest.java,0\4\0420eed6b8fa2b2992785d3e3bbeceb1858c05ae
 n
 >src/test/java/com/thymeleaf/controller/UserControllerTest.java,2\7\27e0fc879832d21890c5229f881a141048f503a9
-j
-:src/main/java/com/thymeleaf/controller/UserController.java,a\3\a391388167a3800bea141b643459b946cf3819e8

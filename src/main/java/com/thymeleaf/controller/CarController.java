@@ -16,7 +16,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/car")
 public class CarController {
 
     @Autowired
@@ -25,7 +24,7 @@ public class CarController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/getCars")
     public String getAllCars(Model model,
                              @RequestParam(required = false) String keyword,
                              @RequestParam(required = false) Double startPrice,
